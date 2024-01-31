@@ -1,0 +1,16 @@
+/* Reset and base styles  */
+body {
+   padding: 0px;
+   margin: 0px;
+   border: none;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+a {
+   text-decoration: none;
+}
