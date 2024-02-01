@@ -44,8 +44,6 @@ const Home: FC = () => {
       };
    }, [isFetching]);
 
-   console.log(data);
-
    return (
       <Layout>
          <div className={styles.home}>
@@ -56,8 +54,8 @@ const Home: FC = () => {
                {data?.pages.map((group, i) => {
                   return (
                      <React.Fragment key={i}>
-                        {group.map(({ url, id }) => (
-                           <CatItem key={id} url={url} />
+                        {group.map((cat) => (
+                           <CatItem key={cat.id} cat={cat}/>
                         ))}
                      </React.Fragment>
                   );

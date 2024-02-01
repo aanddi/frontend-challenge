@@ -32,16 +32,15 @@
       &:hover {
          cursor: pointer;
          background-color: rgb(174, 172, 172, 0.8);
+
+         svg {
+            fill: red;
+         }
       }
 
       svg {
-         fill: none;
          stroke: red;
          stroke-width: 1.5px;
-      }
-
-      svg:hover {
-         fill: red;
       }
    }
 }

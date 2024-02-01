@@ -9,6 +9,9 @@
 
       @media (max-width: 500px) {
          justify-content: space-between;
+         gap: 10px;
+         text-align: center;
+         height: 80px;
       }
    }
 
@@ -24,4 +27,3 @@
       }
    }
 }
-
