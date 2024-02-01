@@ -9,7 +9,7 @@
 
       @media (max-width: 500px) {
          justify-content: space-between;
-         gap: 10px;
+         gap: 5px;
          text-align: center;
          height: 80px;
       }
@@ -24,6 +24,10 @@
 
       &:hover {
          background-color: #3388c5;
+      }
+
+      @media (max-width: 500px) {
+         padding: 15px 10px;
       }
    }
 }
