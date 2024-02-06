@@ -1,0 +1,10 @@
+.ribbon {
+   display: flex;
+   align-items: center;
+   gap: 70px;
+   flex-wrap: wrap;
+
+   @media (max-width: 1400px) {
+      justify-content: center;
+   }
+}

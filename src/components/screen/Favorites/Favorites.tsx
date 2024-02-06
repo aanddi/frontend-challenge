@@ -1,27 +1,25 @@
-import CatItem from "components/elements/CatItem/CatItem";
-import ErrorMessage from "components/elements/Error/Error";
-import Layout from "components/layout/Layout";
-import { useTypedSelector } from "hook/redux";
-import { FC } from "react";
-import styles from "./Favorites.module.scss";
+import { FC } from 'react'
+import { useTypedSelector } from 'src/hooks/redux'
+
+import CatItem from 'src/components/elements/CatItem/CatItem'
+import ErrorMessage from 'src/components/elements/Error/Error'
+import GridRibbon from 'src/components/elements/GridRibbon/GridRibbon'
+import Layout from 'src/components/layout/Layout'
 
 const Favorites: FC = () => {
-   const { favorites } = useTypedSelector((state) => state.favorites);
+   const { favorites } = useTypedSelector(state => state.favorites)
 
    return (
       <Layout>
-         <div className={styles.favorites}>
-            <div className={styles.favorites__cards}>
-               {favorites.map((cat) => {
-                  return <CatItem cat={cat} key={cat.id}/>;
-               })}
-            </div>
-         </div>
-         {favorites.length === 0 && (
-            <ErrorMessage message="Вы не добавляли котиков в избранное" />
-         )}
-      </Layout>
-   );
-};
+         <GridRibbon>
+            {favorites.map(cat => {
+               return <CatItem cat={cat} key={cat.id} />
+            })}
+         </GridRibbon>
 
-export default Favorites;
+         {favorites.length === 0 && <ErrorMessage message="Вы не добавляли котиков в избранное" />}
+      </Layout>
+   )
+}
+
+export default Favorites

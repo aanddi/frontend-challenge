@@ -1,7 +1,7 @@
-import { FC, PropsWithChildren } from "react";
+import { ScrollTop } from 'primereact/scrolltop'
+import { FC, PropsWithChildren } from 'react'
 
-import Header from "../elements/Header/Header";
-import { ScrollTop } from "primereact/scrolltop";
+import Header from 'src/components/elements/Header/Header'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
    return (
@@ -9,10 +9,10 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
          <Header />
          <main className="page">
             <div className="page__container">{children}</div>
-            <ScrollTop icon="pi pi-arrow-up" className="scrolltop"/>
+            <ScrollTop icon="pi pi-arrow-up" className="scrolltop" />
          </main>
       </>
-   );
-};
+   )
+}
 
-export default Layout;
+export default Layout

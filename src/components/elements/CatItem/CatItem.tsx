@@ -1,30 +1,31 @@
-import { FC } from "react";
-import styles from "./CatItem.module.scss";
+import { FC } from 'react'
+import { useTypedDispatch, useTypedSelector } from 'src/hooks/redux'
 
-import { ICat } from "types/cat.interface";
+import styles from './CatItem.module.scss'
 
-import { useTypedDispatch, useTypedSelector } from "hook/redux";
-import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { addFavorite, deleteFavorite } from "store/favorites.slice";
-interface CatItem {
-   cat: ICat;
+import { addFavorite, deleteFavorite } from 'src/store/favorites.slice'
+
+import { ICat } from 'src/types/cat.interface'
+
+import { IoHeartOutline, IoHeartSharp } from 'react-icons/io5'
+
+interface ICatItem {
+   cat: ICat
 }
 
-const CatItem: FC<CatItem> = ({ cat }) => {
-   const dispatch = useTypedDispatch();
-   const { favorites } = useTypedSelector((state) => state.favorites);
+const CatItem: FC<ICatItem> = ({ cat }) => {
+   const dispatch = useTypedDispatch()
+   const { favorites } = useTypedSelector(state => state.favorites)
 
-   const isFavorite = favorites.some(
-      (favoriteCat) => favoriteCat.id === cat.id
-   );
+   const isFavorite = favorites.some(favoriteCat => favoriteCat.id === cat.id)
 
    const addHandleButton = () => {
-      dispatch(addFavorite(cat));
-   };
+      dispatch(addFavorite(cat))
+   }
 
    const deleteHandleButton = () => {
-      dispatch(deleteFavorite(cat));
-   };
+      dispatch(deleteFavorite(cat))
+   }
 
    return (
       <>
@@ -33,7 +34,7 @@ const CatItem: FC<CatItem> = ({ cat }) => {
 
             {isFavorite ? (
                <button onClick={deleteHandleButton} className={styles.card__favorite}>
-                  <IoHeartSharp style={{ color: "red" }} size={25} />
+                  <IoHeartSharp style={{ color: 'red' }} size={25} />
                </button>
             ) : (
                <button className={styles.card__favorite}>
@@ -42,7 +43,7 @@ const CatItem: FC<CatItem> = ({ cat }) => {
             )}
          </div>
       </>
-   );
-};
+   )
+}
 
-export default CatItem;
+export default CatItem

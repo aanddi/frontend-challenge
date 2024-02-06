@@ -1,35 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
-import { ICat } from "types/cat.interface";
+import { ICat } from 'src/types/cat.interface'
 
 interface IFavoritesState {
-   favorites: ICat[];
+   favorites: ICat[]
 }
 
 const initialState: IFavoritesState = {
-   favorites: [],
-};
+   favorites: []
+}
 
 const favoritesSlice = createSlice({
-   name: "favorites",
+   name: 'favorites',
    initialState,
 
    reducers: {
       addFavorite(state, action) {
          state.favorites.push({
             id: action.payload.id,
-            url: action.payload.url,
-         });
+            url: action.payload.url
+         })
       },
 
       deleteFavorite(state, action) {
-         state.favorites = state.favorites.filter(
-            (favorite) => favorite.id !== action.payload.id
-         );
-      },
-   },
-});
+         state.favorites = state.favorites.filter(favorite => favorite.id !== action.payload.id)
+      }
+   }
+})
 
-export const { addFavorite, deleteFavorite } = favoritesSlice.actions;
+export const { addFavorite, deleteFavorite } = favoritesSlice.actions
 
-export default favoritesSlice.reducer;
+export default favoritesSlice.reducer

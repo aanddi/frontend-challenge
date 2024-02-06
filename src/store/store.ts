@@ -1,52 +1,37 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import {
-   FLUSH,
-   PAUSE,
-   PERSIST,
-   PURGE,
-   REGISTER,
-   REHYDRATE,
-   persistReducer,
-   persistStore,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import favoritesReducer from "./favorites.slice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+import favoritesReducer from './favorites.slice'
 
 const rootReduser = combineReducers({
-   favorites: favoritesReducer,
-});
+   favorites: favoritesReducer
+})
 
 const persistConfig = {
-   key: "favorites",
-   storage,
-};
+   key: 'favorites',
+   storage
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReduser);
+const persistedReducer = persistReducer(persistConfig, rootReduser)
 
 export const setupStore = () => {
    return configureStore({
       reducer: persistedReducer,
-      middleware: (getDefaultMiddleware) =>
+      middleware: getDefaultMiddleware =>
          getDefaultMiddleware({
             serializableCheck: {
-               ignoredActions: [
-                  FLUSH,
-                  REHYDRATE,
-                  PAUSE,
-                  PERSIST,
-                  PURGE,
-                  REGISTER,
-               ],
-            },
-         }),
-   });
-};
+               ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+            }
+         })
+   })
+}
 
-export type TypeRootState = ReturnType<typeof rootReduser>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDuspatch = AppStore["dispatch"];
+export type TypeRootState = ReturnType<typeof rootReduser>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDuspatch = AppStore['dispatch']
 
-const store = setupStore();
-export default store;
+const store = setupStore()
+export default store
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store)
